@@ -36,6 +36,9 @@ public class Status {
 		if (pin.isStrike()) {
 			return "X";
 		}
+		if(pin.getPin() == Pin.getPinMinValue()) {
+			return "-";
+		}
 		return pin.getPin() + "";
 	}
 
@@ -43,7 +46,7 @@ public class Status {
 		if (firstPin.isSpare(secondPin)) {
 			return firstPin.getPin() + "|/";
 		}
-		if (secondPin.getPin() == 0) {
+		if (secondPin.getPin() == Pin.getPinMinValue()) {
 			return firstPin.getPin() + "|-";
 		}
 		return firstPin.getPin() + "|" + secondPin.getPin();
