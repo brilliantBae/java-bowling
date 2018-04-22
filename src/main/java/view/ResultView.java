@@ -25,6 +25,7 @@ public class ResultView {
 		}
 		System.out.println(firstLine);
 	}
+
 	public static void printStatus(String playerName, Main main) {
 		printFirstLine();
 		String secondLine = "|   " + playerName + "  |";

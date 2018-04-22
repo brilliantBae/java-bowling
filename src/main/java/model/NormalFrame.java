@@ -16,7 +16,6 @@ public class NormalFrame extends Frame {
 		}
 		return new NormalFrame(this.getFrameNum() + 1);
 	}
-
 	@Override
 	public boolean isEnd() {
 		if (this.getPins().isEmpty()) {

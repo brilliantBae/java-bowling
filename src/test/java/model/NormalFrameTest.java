@@ -54,5 +54,4 @@ public class NormalFrameTest {
 		Frame tenthFrame = ninethFrame.addAfterDecide(pin3);
 		assertTrue(tenthFrame instanceof TenthFrame);
 	}
-
 }

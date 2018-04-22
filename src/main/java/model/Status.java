@@ -36,6 +36,7 @@ public class Status {
 		if (pin.isStrike()) {
 			return "X";
 		}
+
 		if(pin.getPin() == Pin.getPinMinValue()) {
 			return "-";
 		}

@@ -203,5 +203,4 @@ public class Main {
 //		}
 //		return ifIsStrike(pins[1]);
 //	}
-
 }

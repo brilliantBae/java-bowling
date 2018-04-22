@@ -22,5 +22,4 @@ public class BowlingTest {
 		}
 		assertEquals(4, bowling.getFrames().size());
 	}
-
 }
