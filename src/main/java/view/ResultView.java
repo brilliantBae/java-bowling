@@ -1,19 +1,20 @@
 package view;
 
 import java.text.DecimalFormat;
-import java.util.List;
 
-import model.Bowling;
+import controller.Main;
 
 public class ResultView {
-
-	public static void printFrameNum(int frameNum) {
-		System.out.print(frameNum + "프레임 투구 : ");
-	}
-
 	public static void printBlankTable(String playerName) {
 		printFirstLine();
 		printBlankSecondLine(playerName);
+	}
+	private static void printBlankSecondLine(String playerName) {
+		String secondLine = "|   " + playerName + "  |";
+		for (int i = 1; i < 11; i++) {
+			secondLine += "      |";
+		}
+		System.out.println(secondLine);
 	}
 
 	private static void printFirstLine() {
@@ -25,41 +26,15 @@ public class ResultView {
 		System.out.println(firstLine);
 	}
 
-	private static void printBlankSecondLine(String playerName) {
-		String secondLine = "|   " + playerName + "   |";
-		for (int i = 1; i < 11; i++) {
+	public static void printStatus(String playerName, Main main) {
+		printFirstLine();
+		String secondLine = "|   " + playerName + "  |";
+		for (int i = 1; i < main.getFrames().size() + 1; i++) {
+			secondLine += "   " + main.getFrames().get(i - 1).get(i) + "   |";
+		}
+		for (int j = main.getFrames().size() + 1; j < 11; j++) {
 			secondLine += "      |";
 		}
 		System.out.println(secondLine);
-	}
-
-	public static void printResults(String playerName, Bowling bowling) {
-		printFirstLine();
-		System.out.println(returnStatus(playerName, bowling));
-		System.out.println(returnScores(bowling));
-	}
-	
-	private static String returnStatus(String playerName, Bowling bowling) {
-		List<String> allStatus = bowling.makeStatus();
-		String secondLine = "|   " + playerName + "   |";
-		for (String status : allStatus) {
-			secondLine += "   " + status + "   |";
-		}
-		for (int j = allStatus.size() + 1; j < 11; j++) {
-			secondLine += "      |";
-		}
-		return secondLine;
-	}
-
-	private static String returnScores(Bowling bowling) {
-		List<String> totalScores = bowling.getTotal();
-		String thirdLine = "|        |";
-		for (String score : totalScores) {
-			thirdLine += "   " + score + "   |";
-		}
-		for (int j = totalScores.size() + 1; j < 11; j++) {
-			thirdLine += "      |";
-		}
-		return thirdLine;
 	}
 }

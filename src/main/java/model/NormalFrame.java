@@ -1,25 +1,21 @@
 package model;
 
-import Exception.HasNotValueYetException;
-
 public class NormalFrame extends Frame {
 	public NormalFrame(int frameNum) {
 		super(frameNum);
 	}
-	
+
 	@Override
-	public Score calculateScore(Score score) throws HasNotValueYetException {// 해당 프레임의 score를 계산하는 메소드.
-		if(score.isEnd()) {
-			return score;
+	public Frame addAfterDecide(Pin pin) {
+		super.addPins(pin);
+		if (!isEnd()) {
+			return this;
 		}
-		score.add(this.findPin(0).getPin());
-		if(this.findPin(0).isStrike()) {// 다음 프레임이 끝났으면,
-			return this.getNextFrame().calculateScore(score);
+		if (this.getFrameNum() == 9) {
+			return new TenthFrame(this.getFrameNum() + 1);
 		}
-		score.add(this.findPin(1).getPin());
-		return calculateScore(score);
+		return new NormalFrame(this.getFrameNum() + 1);
 	}
-	
 	@Override
 	public boolean isEnd() {
 		if (this.getPins().isEmpty()) {
