@@ -11,11 +11,7 @@ import view.ResultView;
 
 public class Main {
 	private static Scanner sc = new Scanner(System.in);
-	private List<Integer> falledPins = new ArrayList<>();
-	private List<Integer> falledPinsFor10thFrame = new ArrayList<>();
-	public Map<Integer, String> currFrame = new HashMap<>();
-	public static int frameNum = 1;
-	List<Map<Integer, String>> frames = new ArrayList<>();
+	private static Bowling bowling = new Bowling();
 
 	public static void main(String[] args) {
 		String playerName = InputView.getPlayerName(sc);
@@ -167,10 +163,11 @@ public class Main {
 				}
 				return "X" + createFirstStatus(pins[1]);
 			}
-			return createSecondStatus(pins[0], pins[1]);
-		}
-		if (pins[0] == 10) {
-			return "X" + createSecondStatus(pins[1], pins[2]);
+			play(playerName);
+		} catch (InvalidFalledPinInputException e) {
+			System.out.println("볼링 핀은 0이상 10이하여야 합니다.");
+			System.out.println("다시 입력해 주세요.");
+			play(playerName);
 		}
 		status = createSecondStatus(pins[0], pins[1]) + createFirstStatus(pins[2]);
 		return status;

@@ -11,5 +11,4 @@ public class InputView {
 	public static int getFalledPin(Scanner sc) {
 		return sc.nextInt();
 	}
-
 }

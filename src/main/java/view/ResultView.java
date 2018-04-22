@@ -9,7 +9,6 @@ public class ResultView {
 		printFirstLine();
 		printBlankSecondLine(playerName);
 	}
-
 	private static void printBlankSecondLine(String playerName) {
 		String secondLine = "|   " + playerName + "  |";
 		for (int i = 1; i < 11; i++) {
